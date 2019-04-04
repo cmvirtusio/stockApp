@@ -1,28 +1,52 @@
-<div class="container color-dark">
-  <div class="col">
-      WatchList ({{watchList.length}})
-  </div>
-  <div class="col">
-    Daily Chart of {{ticker}}
-  </div> 
-  
-</div>
-
-<div class="container color-light">
-    <div class="col">
-    <form>
-        <input type="text" class="txt" name="item" [(ngModel)]="ticker">
-        <input type="submit" class="btn" value="Add to WatchList" (click)="getValues()">
-    </form>
-    <p class="title-container"> WatchList </p>
-    <p class="life-container" *ngFor="let stock of watchList" (click)="getValuesFromWL(stock)">
-      <label>{{stock}}</label>
-      <button style="float: right;" (click)="removestock(stock)">x</button>
-    </p>
-  </div>
-
-  <div *ngIf="chart" class="col">
-      <canvas id="canvas">{{ chart }}</canvas>
+<div>
+  <div>
+    <div>
+      <label>Number Of Simulations:</label><input type="number" class="form-control"
+        [(ngModel)]="numberOfSimulations"><br>
+      <label>Inflation Rate:</label><input type="number" class="form-control" [(ngModel)]="inflationRate"><br>
+      <label>Sharpe Ratio:</label><input type="number" class="form-control" [(ngModel)]="sharpeRatio"><br>
+      <label>Current Age:</label><input type="number" class="form-control" [(ngModel)]="currentAge"><br>
+      <label>Retirement Age:</label><input type="number" class="form-control" [(ngModel)]="retirementAge"><br>
+      <label>Initial Investment:</label><input type="number" class="form-control" [(ngModel)]="initialInvestment"><br>
+      <label>Future CashFlow:</label><input type="number" class="form-control" [(ngModel)]="futureCashFlow"><br>
+      <label>CashFlow Growth:</label><input type="number" class="form-control" [(ngModel)]="futureCashFlowGrowth"><br>
+      <label>Retirement Target:</label><input type="number" class="form-control" [(ngModel)]="retirementTarget"><br>
+      <label>Personal Risk Profile:</label><input type="text" class="form-control" [(ngModel)]="riskProfile"><br>
+      <label>VC Returns:</label><input type="number" class="form-control" [(ngModel)]="vcReturn"><br>
+      <label>C Returns:</label><input type="number" class="form-control" [(ngModel)]="cReturn"><br>
+      <label>B Returns:</label><input type="number" class="form-control" [(ngModel)]="bReturn"><br>
+      <label>G Returns:</label><input type="number" class="form-control" [(ngModel)]="gReturn"><br>
+      <label>AG Returns:</label><input type="number" class="form-control" [(ngModel)]="agReturn"><br>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="runSimulation()">Run Simulation</button>
+      </span>
     </div>
-  
+    <div class="column">
+      <canvas id="VCPortfolio"></canvas>
+      <label>Odds of Hitting Target: {{ oddsArray.VC }}</label>
+    </div>
+    <div class="column">
+      <canvas id="CPortfolio"></canvas>
+      <label>Odds of Hitting Target: {{ oddsArray.C }}</label>
+    </div>
+    <div class="column">
+      <canvas id="BPortfolio"></canvas>
+      <label>Odds of Hitting Target: {{ oddsArray.B }}</label>
+    </div>
+    <div class="column">
+      <canvas id="GPortfolio"></canvas>
+      <label>Odds of Hitting Target: {{ oddsArray.G }}</label>
+    </div>
+    <div class="column">
+      <canvas id="AGPortfolio"></canvas>
+      <label>Odds of Hitting Target: {{ oddsArray.AG }}</label>
+    </div>
+    <div class="column">
+      <canvas id="DynamicPortfolio"></canvas>
+      <label>Odds of Hitting Target: {{ oddsDynamic }}</label>
+    </div>
+    <div class="column">
+      <canvas id="stackedBars">{{ stackedChart }}</canvas>
+    </div>
+  </div>
 </div>

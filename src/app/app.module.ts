@@ -1,16 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-//This Enables http calls;
-import { HttpClientModule } from '@angular/common/http';
-import { AlphavantageService } from './alphavantage.service';
-//enable twowaybinding
 import { FormsModule } from '@angular/forms';
-
-
+import { SimulationsService } from './simulations.service';
 
 import { AppComponent } from './app.component';
-
 
 @NgModule({
   declarations: [
@@ -18,10 +11,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     FormsModule
   ],
-  providers: [AlphavantageService],
+  providers: [SimulationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
